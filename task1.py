@@ -5,7 +5,7 @@ import os
 
 async def download_page(index):
 	website = f"https://reqres.in/api/users?page{index}"
-
+	
 	file_name = "\\".join(( os.path.realpath(__file__).split("\\") )[0:-1]) + f"\\{index}.html"
 	# this returns the file name of the output along with full path
 

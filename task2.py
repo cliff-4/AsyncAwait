@@ -12,7 +12,7 @@ def avg(list_object): #function to calculate average of numbers in a list
 	return round(a, 2)
 
 async def download_page(index):
-	#website = f"https://reqres.in/api/users?page{{{index}}}"
+	#website = f"https://reqres.in/api/users?page{index}"
 	website = f"https://xkcd.com/{index}/info.0.json"
 
 	file_name = "\\".join((os.path.realpath(__file__).split("\\"))[0:-1]) + f"\\xkcd\\{index}.json"
@@ -24,7 +24,7 @@ async def download_page(index):
 			if response.status in range(200, 300):
 
 				json_content = await response.json() 
-				#response.read() returns a string, whereas response.json() returns a disctionary
+				#response.read() returns a string, whereas response.json() returns a dictionary
 
 				json_text = json.dumps(json_content, indent = 4)
 				#the disctionary is then converted to a string with appropriate indentations
@@ -105,10 +105,8 @@ print(f"\nResult for {times} runs:\nAsync time avg: {avg(async_times)} s\nSync t
 # 		(sync takes 8.64 times more time to execute)
 
 """
-
 It is noted that the first cycle takes significantly more time for the synchronous execution,
 as compared to subsequent cycles, for some reason. But in the long run, async execution is about
 10 times faster than sync execution. Of course, this number only increases as the number of 
 requests per cycle increases.
-
 """
